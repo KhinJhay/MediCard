@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediCard — Your Medical Identity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Bebas+Neue&display=swap" rel="stylesheet">
+  
+  <!-- Link to your new external CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="particles"></div>
+
+<div class="wrapper">
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Medi<span>Card</span></div>
+    <div class="nav-links">
+      <a href="#create">Create Card</a>
+      <a href="#how">How It Works</a>
+      <a href="https://www.linkedin.com/in/" target="_blank" class="nav-cta">Connect with Me</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-tag">Medical Identity System v1.0</div>
+      <h1>
+        Your Health.<br>
+        <span class="accent">One Card.</span>
+        <span class="line2">Everywhere You Go.</span>
+      </h1>
+      <p class="hero-desc">
+        Stop filling the same hospital forms over and over. Build your complete medical profile in minutes, generate a secure card with QR code, and share it instantly with any healthcare provider.
+      </p>
+      <div class="hero-actions">
+        <a href="#create" class="btn-primary">Create Your Card</a>
+        <a href="#how" class="btn-ghost">See How It Works</a>
+      </div>
+    </div>
+
+    <div class="card-showcase">
+      <div class="card-3d-wrap">
+        <div class="card-3d" id="demoCard">
+          <!-- FRONT -->
+          <div class="card-face card-front">
+            <div class="card-top">
+              <div>
+                <div class="card-badge">MEDICAL ID</div>
+              </div>
+              <div style="text-align:right">
+                <div class="blood-type">A+</div>
+                <div class="blood-label">BLOOD TYPE</div>
+              </div>
+            </div>
+            <div class="card-name">ALEX MORGAN</div>
+            <div class="card-id">MC-2024-0047 · DOB: 14 MAR 1995</div>
+            <div class="card-vitals">
+              <div class="vital">
+                <div class="vital-val">PENICILLIN</div>
+                <div class="vital-key">⚠ ALLERGY</div>
+              </div>
+              <div class="vital">
+                <div class="vital-val">DIABETIC</div>
+                <div class="vital-key">CONDITION</div>
+              </div>
+              <div class="vital">
+                <div class="vital-val">+1 555 000</div>
+                <div class="vital-key">EMERGENCY</div>
+              </div>
+            </div>
+            <div class="heartbeat-wrap">
+              <svg class="heartbeat-svg" viewBox="0 0 400 30" fill="none" preserveAspectRatio="none">
+                <polyline points="0,15 60,15 80,5 100,25 120,2 140,28 160,15 220,15 240,8 260,22 280,15 400,15"
+                  stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.6" fill="none"/>
+                <polyline points="0,15 60,15 80,5 100,25 120,2 140,28 160,15 220,15 240,8 260,22 280,15 400,15"
+                  stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.6" fill="none" transform="translate(200,0)"/>
+              </svg>
+            </div>
+          </div>
+          <!-- BACK -->
+          <div class="card-face card-back">
+            <div class="back-info">
+              <div class="back-title">SCAN TO VIEW FULL RECORD</div>
+              <div class="qr-area">
+                <div class="qr-box">
+                  <div class="qr-pulse"></div>
+                  <div class="qr-pattern" id="qrPattern"></div>
+                </div>
+                <div style="flex:1">
+                  <div class="back-item">
+                    <span class="back-item-key">Doctor</span>
+                    <span class="back-item-val">Dr. Sarah Chen</span>
+                  </div>
+                  <div class="back-item">
+                    <span class="back-item-key">Hospital</span>
+                    <span class="back-item-val">City Medical</span>
+                  </div>
+                  <div class="back-item">
+                    <span class="back-item-key">Medication</span>
+                    <span class="back-item-val alert">Metformin 500mg</span>
+                  </div>
+                  <div class="back-item">
+                    <span class="back-item-key">Last Updated</span>
+                    <span class="back-item-val ok">2 days ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flip-hint">HOVER TO FLIP CARD</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-section">
+    <div class="stat-item">
+      <div class="stat-num" data-target="2800000">0</div>
+      <div class="stat-label">ER Visits Yearly with No Records</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="30">0</div>
+      <div class="stat-label">Seconds to Generate Your Card</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="100">0</div>
+      <div class="stat-label">% Free, No Account Needed</div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <section class="form-section" id="create">
+    <div class="section-tag">Build Your Card</div>
+    <div class="section-title">Enter Your <span class="dim">Medical Profile</span></div>
+
+    <form id="mediForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="fname" placeholder="Jane Doe" required />
+        </div>
+        <div class="form-group">
+          <label>Date of Birth</label>
+          <input type="date" id="dob" required />
+        </div>
+        <div class="form-group">
+          <label>Blood Type</label>
+          <div class="blood-options">
+            <button type="button" class="blood-btn" data-val="A+">A+</button>
+            <button type="button" class="blood-btn" data-val="A-">A−</button>
+            <button type="button" class="blood-btn" data-val="B+">B+</button>
+            <button type="button" class="blood-btn" data-val="B-">B−</button>
+            <button type="button" class="blood-btn" data-val="O+">O+</button>
+            <button type="button" class="blood-btn" data-val="O-">O−</button>
+            <button type="button" class="blood-btn" data-val="AB+">AB+</button>
+            <button type="button" class="blood-btn" data-val="AB-">AB−</button>
+          </div>
+          <input type="hidden" id="bloodType" />
+        </div>
+        <div class="form-group">
+          <label>Emergency Contact</label>
+          <input type="tel" id="emergency" placeholder="+233 00 000 0000" />
+        </div>
+        <div class="form-group full">
+          <label>Known Allergies</label>
+          <input type="text" id="allergies" placeholder="e.g. Penicillin, Peanuts, Latex — or None" />
+        </div>
+        <div class="form-group full">
+          <label>Medical Conditions</label>
+          <input type="text" id="conditions" placeholder="e.g. Type 2 Diabetes, Hypertension — or None" />
+        </div>
+        <div class="form-group full">
+          <label>Current Medications</label>
+          <textarea id="medications" placeholder="e.g. Metformin 500mg twice daily, Lisinopril 10mg"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Primary Doctor</label>
+          <input type="text" id="doctor" placeholder="Dr. Full Name" />
+        </div>
+        <div class="form-group">
+          <label>Doctor's Phone</label>
+          <input type="tel" id="doctorPhone" placeholder="+233 00 000 0000" />
+        </div>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="submit-btn">GENERATE MY MEDICARD</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="how">
+    <div class="section-tag">Process</div>
+    <div class="section-title">How It <span class="dim">Works</span></div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">📝</div>
+        <div class="step-title">Fill Your Profile</div>
+        <p class="step-desc">Enter your medical history once — blood type, allergies, conditions, medications, and emergency contacts. Takes under 3 minutes.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">⚡</div>
+        <div class="step-title">Instant Generation</div>
+        <p class="step-desc">Your MediCard is generated instantly in your browser. No servers. No sign up. Your data stays local and private.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">📱</div>
+        <div class="step-title">Share & Save</div>
+        <p class="step-desc">Download your card, screenshot it, or let any healthcare provider scan the QR code to instantly access your full medical record.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">MediCard</div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/" target="_blank" class="li-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.digitalocean.com/careers" target="_blank" class="do-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+        DigitalOcean
+      </a>
+    </div>
+    <div class="footer-copy">Built with purpose. Data stays on your device.</div>
+  </footer>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-title">CARD GENERATED</div>
+    <div class="modal-sub">// YOUR MEDICARD IS READY</div>
+    <div class="generated-card" id="generatedCard"></div>
+    <div class="modal-actions">
+      <button class="modal-btn" onclick="window.print()">PRINT CARD</button>
+      <button class="modal-btn primary" onclick="copyCard()">COPY DETAILS</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Link to your new external JavaScript file -->
+<script src="script.js"></script>
+</body>
+</html>
